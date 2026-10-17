@@ -1,4 +1,4 @@
-# NPRN Biped: Neuro-Plastic Reflex Network on a Wheeled Biped
+# NPRN Sim: Neuro-Plastic Reflex Network on a Wheeled Inverted Pendulum
 
 A C++ / [Dear ImGui](https://github.com/ocornut/imgui) simulator of the **Neuro-Plastic Reflex Network (NPRN)**: a variable-size bank of tiny recurrent neurons that balances a wheeled inverted pendulum whose leg length and body mass change without notice.
 
@@ -40,8 +40,8 @@ g++ -std=c++17 -O2 main.cpp \
     imgui/backends/imgui_impl_opengl3.cpp \
     -Iimgui -Iimgui/backends \
     $(pkg-config --cflags --libs glfw3) -lGL \
-    -o nprn_biped
-./nprn_biped
+    -o nprn_sim
+./nprn_sim
 ```
 
 Adjust the OpenGL link flag for your platform (for example `-framework OpenGL` on macOS or `-lopengl32` on Windows).
