@@ -4,8 +4,6 @@ A C++ / [Dear ImGui](https://github.com/ocornut/imgui) simulator of the **Neuro-
 
 Each neuron holds a fixed two-unit reservoir, a learned one-step-ahead predictor and a learned three-weight control readout. A hard winner-take-all picks the neuron that currently predicts the observation best, and only that neuron's readout produces the control torque. The network sees only a noisy two-dimensional tracking-error signal; it never observes leg length, mass, position, velocity or the gust force.
 
-The full mathematical description of the network and of the plant is in the report: [`nprn.pdf`](nprn.pdf) (LaTeX source: [`nprn.tex`](nprn.tex)).
-
 ## How it works (short version)
 
 - **One state, two outputs.** The winner's hidden state both predicts the next observation and, through a separate readout, gives the control torque. There is no separate policy network.
@@ -20,7 +18,6 @@ The full mathematical description of the network and of the plant is in the repo
 |---|---|
 | `sim.hpp` | The simulation: plant physics, neuron bank, learning rules, structural plasticity, visit bookkeeping, text report. No GUI dependencies. |
 | `main.cpp` | The Dear ImGui front end (GLFW + OpenGL3): robot view, phase plot, error plot, neuron bank view, controls and logs. |
-| `nprn.pdf` / `nprn.tex` | The report. |
 
 ## Building
 
