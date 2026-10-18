@@ -4,6 +4,8 @@ A C++ / [Dear ImGui](https://github.com/ocornut/imgui) simulator of the **Neuro-
 
 Each neuron holds a fixed two-unit reservoir, a learned one-step-ahead predictor and a learned three-weight control readout. A hard winner-take-all picks the neuron that currently predicts the observation best, and only that neuron's readout produces the control torque. The network sees only a noisy two-dimensional tracking-error signal; it never observes leg length, mass, position, velocity or the gust force.
 
+<img width="1443" height="903" alt="Screenshot from 2026-10-17 04-18-56" src="https://github.com/user-attachments/assets/abcce9cf-1925-4541-ab6e-e1dab5833850" />
+
 ## How it works (short version)
 
 - **One state, two outputs.** The winner's hidden state both predicts the next observation and, through a separate readout, gives the control torque. There is no separate policy network.
@@ -18,6 +20,7 @@ Each neuron holds a fixed two-unit reservoir, a learned one-step-ahead predictor
 |---|---|
 | `sim.hpp` | The simulation: plant physics, neuron bank, learning rules, structural plasticity, visit bookkeeping, text report. No GUI dependencies. |
 | `main.cpp` | The Dear ImGui front end (GLFW + OpenGL3): robot view, phase plot, error plot, neuron bank view, controls and logs. |
+| `report.pdf` | Goes through the maths in depth |
 
 ## Building
 
@@ -70,10 +73,6 @@ Adjust the OpenGL link flag for your platform (for example `-framework OpenGL` o
 | control learning rate | 0.02 to 1.5 | 0.3 |
 
 The Viewport window shows the robot, a phase plot, the prediction-error history, the neuron bank, and a table of morphology visits (adaptation error, steady-state error, spawns, dominant neuron, and whether a neuron was reused). The Logs window lists spawn, prune, merge, fall and push events.
-
-## Gallery
-
-<img width="1443" height="903" alt="Screenshot from 2026-10-17 04-18-56" src="https://github.com/user-attachments/assets/abcce9cf-1925-4541-ab6e-e1dab5833850" />
 
 ## Report
 
